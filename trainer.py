@@ -260,10 +260,15 @@ def check_knight_tour(query, s, u):
         response = input(query).lower().strip()
 
     failed = False
-    prev = s
     if len(tour) == 0 or tour[-1] != u:
         tour.append(u)
+    if tour[0] == s:
+        prev = None
+    else:
+        prev = s
     for j in tour:
+        if prev is None:
+            continue
         if not is_valid_knight_jump(prev, j):
             print(" - illegal move from {} to {}".format(write_square(prev), write_square(j)))
             failed = True
