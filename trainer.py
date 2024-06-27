@@ -123,9 +123,10 @@ def read_square(s):
 
 def print_help():
     msg = """You can type the following letters at any time:
-              - q to exit,
-              - s to skip an answer,
-              - or h to see this message."""
+
+ - q to exit,
+ - s to skip an answer,
+ - or h to see this message.\n"""
     print(msg)
 
 
@@ -273,7 +274,7 @@ def check_knight_tour(query, s, u):
 
 def main():
     seed()
-    print("Visualization trainer.")
+    print("Visualization trainer.\n")
     print_help()
     try:
         while True:
