@@ -167,7 +167,7 @@ def read_list(square_list):
         return result
 
     if square_list.find(",") != -1:
-        str_squares = square_list.split(", ")
+        str_squares = square_list.split(",")
     else:
         str_squares = square_list.split(" ")
 
