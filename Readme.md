@@ -9,14 +9,14 @@ squares.
 
 ## How to use
 
-Run `python3 trainer.py` from a console. Answer the questions by typing your
+Run `python3 cli.py` from a console. Answer the questions by typing your
 answer and hitting return. You can quit any time, by answering `q` or skip
 a question by answering `s`.
 
 ## Example
 
 ```
-$ python3 trainer.py 
+$ python3 cli.py 
 Visualization trainer.
 You can type the following letters at any time:
               - q to exit,

@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp,container-queries"></script>
+</head>
+<body class="flex flex-col items-center gap-2 min-h-screen min-h-dvh justify-center text-xl">
+  <div class="prose text-4xl">
+    {{ square }}
+  </div>
+  <form method="POST" action="/" class="flex flex-col gap-4 max-w-2xl">
+    {% if question == "square_color" %}
+      <fieldset>
+        <legend class="font-bold">Square color</legend>
+        <div class="flex gap-4">
+          <div>
+            <input type="radio" id="light" name="guess" value="light" required />
+            <label for="light">Light</label>
+          </div>
+          <div>
+            <input type="radio" id="dark" name="guess" value="dark" required />
+            <label for="dark">Dark</label>
+          </div>
+        </div>
+      </fieldset>
+    {% endif %}
+    {% if question == "knight_jumps" %}
+      <div class="font-bold">Enter all knight jumps from this square (e.g. c2, b3)</div>
+      <input id="knight_jumps" name="guess" required />
+    {% endif %}
+    {% if question == "bishop_transfers" %}
+      <div class="font-bold">List all transfer squares for a bishop from {{square}} to {{different_bishop_square}} (leave empty if on same diagonal).</div>
+      <input id="bishop_transfers" name="guess" required />
+    {% endif %}
+    <input type="hidden" name="square" value="{{ square }}" />
+    <input type="hidden" name="different_bishop_square" value="{{ different_bishop_square }}" />
+    <input type="hidden" name="different_square" value="{{ different_square }}" />
+    <input type="hidden" name="question" value="{{ question }}" />
+    <div class="flex gap-2 self-start ">
+      <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded">
+        Check
+      </button>
+    </div>
+
+
+  </form>
+  {% if error %}
+    <div class="border border-red-400 rounded-b bg-red-100 px-4 py-3 text-red-700">
+        {{ error }}
+    </div>
+  {% elif wrong %}
+    <div class="border border-red-400 rounded-b bg-red-100 px-4 py-3 text-red-700">
+        Incorrect! Try again.
+    </div>
+  {% endif %}
+</body>
+</html>
